@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Contacts</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#addContact">Add Contact</a></li>
+                <li><a href="#searchContact">Search Contact</a></li>
+                <li><a href="#displayContacts">Display Contacts</a></li>
+                <li><a href="#deleteContact">Delete Contact</a></li>
+                <li><a href="#updateContact">Update Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="addContact">
+            <h2>Add Contact</h2>
+            <form id="addForm" onsubmit="addContact(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <br>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" required>
+                <br>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <section id="searchContact">
+            <h2>Search Contact</h2>
+            <form onsubmit="searchContact(); return false;">
+                <label for="searchTerm">Search by Name or Phone:</label>
+                <input type="text" id="searchTerm">
+                <br>
+                <button type="submit">Search</button>
+            </form>
+            <p id="searchResult"></p>
+        </section>
+
+        <section id="displayContacts">
+            <h2>All Contacts</h2>
+            <button onclick="displayAllContacts()">Show Contacts</button>
+            <ul id="contactList"></ul>
+        </section>
+
+        <section id="deleteContact">
+            <h2>Delete Contact</h2>
+            <form onsubmit="deleteContact(); return false;">
+                <label for="deleteTerm">Enter Name or Phone to Delete:</label>
+                <input type="text" id="deleteTerm">
+                <br>
+                <button type="submit">Delete</button>
+            </form>
+            <p id="deleteResult"></p>
+        </section>
+
+        <section id="updateContact">
+            <h2>Update Contact</h2>
+            <form onsubmit="updateContact(); return false;">
+                <label for="updateTerm">Enter Name or Phone to Update:</label>
+                <input type="text" id="updateTerm">
+                <br>
+                <label for="newName">New Name:</label>
+                <input type="text" id="newName">
+                <br>
+                <label for="newPhone">New Phone:</label>
+                <input type="text" id="newPhone">
+                <br>
+                <button type="submit">Update</button>
+            </form>
+            <p id="updateResult"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+Node {
+    name: String
+    phone: String
+    next: Node
+}
+
+LinkedList {
+    head: Node
+
+    // Method to insert a new contact
+    insertContact(name: String, phone: String): void {
+        newNode = new Node(name, phone)  // Create a new Node
+        if head is null then               // Check if the list is empty
+            head = newNode                 // Set head to new Node
+        else
+            current = head                 // Start at the head
+            while current.next is not null do  // Traverse to the end of the list
+                current = current.next
+            end while
+            current.next = newNode         // Set the last node's next to new Node
+        end if
+    }
+
+    // Method to search for a contact
+    searchContact(term: String): Node {
+        current = head                     // Start at the head
+        while current is not null do
+            if current.name == term or current.phone == term then
+                return current             // Return the contact found
+            end if
+            current = current.next         // Move to the next node
+        end while
+        return null                        // Return null if not found
+    }
+
+    // Method to display all contacts
+    displayContacts(): void {
+        current = head                     // Start at the head
+        while current is not null do
+            print current.name, current.phone  // Print the current contact
+            current = current.next           // Move to the next node
+        end while
+    }
+
+    // Method to delete a contact
+    deleteContact(term: String): String {
+        if head is null then                // Check if the list is empty
+            return "Contact not found"      // Return not found message
+        end if
+
+        if head.name == term or head.phone == term then  // Check if head matches
+            head = head.next                // Update head to next node
+            return "Contact deleted"        // Return deleted message
+        end if
+
+        current = head                     // Start at the head
+        while current.next is not null do
+            if current.next.name == term or current.next.phone == term then
+                current.next = current.next.next  // Bypass the node to delete it
+                return "Contact deleted"    // Return deleted message
+            end if
+            current = current.next          // Move to the next node
+        end while
+        return "Contact not found"          // Return not found message
+    }
+
+    // Method to update a contact
+    updateContact(term: String, newName: String, newPhone: String): String {
+        current = head                     // Start at the head
+        while current is not null do
+            if current.name == term or current.phone == term then
+                if newName is not null then
+                    current.name = newName  // Update name if provided
+                end if
+                if newPhone is not null then
+                    current.phone = newPhone // Update phone if provided
+                end if
+                return "Contact updated"    // Return updated message
+            end if
+            current = current.next          // Move to the next node
+        end while
+        return "Contact not found"          // Return not found message
+    }
+}
